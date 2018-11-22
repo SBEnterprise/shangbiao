@@ -1,0 +1,92 @@
+<?php
+
+namespace App\Http\Controllers\Home;
+
+use Redirect;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Model\Goods;
+use App\Model\Detail;
+
+use App\Model\Comment;
+use Illuminate\Support\Facades\Cache;
+use Carbon\Carbon;
+use Session;
+
+class DetailController extends Controller
+{
+    //商品详情
+
+    public function detail(Request $request)
+    {   
+        //接收传递过来的商品ID  
+        $gid =intval(@$request->get('gid'));  
+        
+        // $gid = intval(@$request->get('gid'));
+        //判断是否带来了商品ID
+        if ($gid <= 0) {
+            // dd($gid);
+            return Redirect::to('/');
+        }
+        // 查询商品是否热卖
+        $is_hot = Goods::select('is_hot','sales_num')
+        ->where('id','=',$gid)
+        ->where('is_hot','=',1)
+        ->where('sales_num','>',100)
+        ->first();
+
+        // dd($hot_sale_goods);
+        //如果是热销商品，就从缓存中读取数据
+        if (!empty($is_hot)) {
+            //是热销商品走这里
+            $goods_key = 'goods_id_'.$gid;
+            $key = md5($goods_key);
+
+            if (Cache::get($key)) {
+                $data= Cache::get($key);
+                // dd($data);
+                // echo '缓存中取';
+            } else {
+                // echo'查询数据库';
+
+                $data =  Goods::select('id','goods_remark','goods_pic','goods_name','sales_num','price','is_hot')
+
+                        ->where('id',$gid)->get();
+                //缓存时间
+                $expire = Carbon::now()->addMinutes(10);
+                // 存到缓存中
+                $hot_sale_goods = Cache::put($key, json_decode($data),  $expire);   
+                // echo'查询数据库';             
+            }
+               
+        } else {
+            //没达到做缓存条件的走这里
+
+            $data =  Goods::select('id','goods_remark','goods_pic','goods_name','sales_num','price','is_hot')
+                        ->where('id',$gid)->get();          
+        }
+
+        $hot_goods = Goods::select('id','brand_name','price','present_price')
+
+                    ->with('detail')
+                    ->where('is_hot',1)
+                    ->orderBy('is_hot','desc')
+                    ->take(5)
+                    ->get()
+                    ->toArray();
+                    // echo '<pre>';
+
+        //商品基本属性
+        $detail = Detail::select()->where('gid',$gid)->get();
+        // dd($detail);
+
+        // dd($comment);
+        return view('Home/detail',['data'=>$data,
+                                    'detail'=>$detail,
+                                    'gid'=>$gid, 
+                                    'hot_goods'=>$hot_goods,
+                                ]);
+
+    }
+
+}
