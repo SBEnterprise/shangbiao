@@ -23,12 +23,12 @@ class UserController extends Controller
     //用来存放验证码信息
     // static $checkPhoneCode = '';
     // public $checkPhoneCode='';
-
+    //展示注册页面
     public function registerView()
     {
         return view('Home/register');
     }
-
+    //展示注册页面
     public function loginView()
     {
         return view('Home/login');
