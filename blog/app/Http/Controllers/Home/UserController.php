@@ -68,8 +68,8 @@ class UserController extends Controller
         $repass = $request->input('repass');
         $email = $request->input('email');
         $phone = $request->input('phone');
-        $user = User::select(['id', 'user_name', 'password', 'phone'])->where('user_name', $name)->first();
-        $phonecheck = User::select(['id', 'user_name', 'password', 'phone'])->where('phone', $phone)->first();
+        $user = User::select(['id', 'username', 'password', 'phone'])->where('username', $name)->first();
+        $phonecheck = User::select(['id', 'username', 'password', 'phone'])->where('phone', $phone)->first();
 
        if ($user) {
             echo json_encode(['status'=>1, 'msg'=>'会员名已被注册！']);
@@ -169,7 +169,7 @@ class UserController extends Controller
                 $password = password_hash($_POST['pass'], PASSWORD_DEFAULT);
 
                 $data = [
-                    'user_name'=>$_POST['name'],
+                    'username'=>$_POST['name'],
                     'email'=>$_POST['email'],
                     'password'=>$password,
                     'status'=>0,
@@ -212,10 +212,10 @@ class UserController extends Controller
     {
         $name = $request->input('name');
         $pass = $request->input('pass');
-        $user = User::select(['user_name', 'id', 'password'])->where('user_name', $name)->first();
+        $user = User::select(['username', 'id', 'password'])->where('username', $name)->first();
         // dd($user->id);
-        // $userkey = $user->id.$user->user_name;
-        // $request->session()->put('username', $user->user_name);
+        // $userkey = $user->id.$user->username;
+        // $request->session()->put('username', $user->username);
         //  $value = $request->session()->get( 'username' );
 
         // dd($value);
@@ -252,7 +252,7 @@ class UserController extends Controller
             }
 
             //将用户名存放seesion中
-            $request->session()->put('username', $user->user_name);
+            $request->session()->put('username', $user->username);
             $request->session()->put('userid', $user->id);
 
             echo json_encode(['status'=>1, 'msg'=>'正在登录中...']);

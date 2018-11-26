@@ -11,7 +11,7 @@ class Common extends Controller
 {
     /**
      * @CustomPagination 手动创建分页器
-     * @author LiangZhi <gzphper@163.com>
+     * @author LIZHENTAO <ZHENTAOLIZHENTAO@163.com>
      * @param  object $request  请求实例
      * @param  array $data      要分页的数据
      * @param  int   $perPage   每页显示条数
