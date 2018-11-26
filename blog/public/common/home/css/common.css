@@ -1,0 +1,46 @@
+ 
+/*start head*/
+ header {
+ 	position: relative;
+ 	height: .7rem;
+ 	background-color: #fff;
+ }
+ header .container {
+ 	padding: .1rem 0; 
+ }
+ header .logo {
+ 	position: absolute;
+ 	left: 50%;
+ 	transform: translateX(-50%);
+ 	width: auto;
+	height: .5rem;
+ }
+ header .logo img {
+	width: auto;
+	height: .5rem;
+ }
+ /*end head*/
+
+
+
+
+/*start foot*/
+footer {
+	width: 12rem;
+	margin: .4rem auto .3rem;
+}
+footer .container {
+	position: relative;
+}
+footer .foot-info {
+	text-align: center;
+	font-size: 12px;
+}
+footer .wanganbeian {
+	position: absolute;
+	top: .2rem;
+	right: 2rem;
+	width: .36rem;
+	height: .36rem;
+}
+/*end foot*/

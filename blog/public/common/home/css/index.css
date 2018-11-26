@@ -1,0 +1,207 @@
+
+		/*start head*/
+		header {
+			height: 1rem;
+			background-color: #8E231D;
+		}
+		header .container {
+			position: relative;
+			width: 12rem;
+			height: 1rem;
+			margin: 0 auto;
+			background-color: #8E231D;
+			box-sizing: border-box;
+			padding: .2rem 0;
+		}
+		header .container .logo {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+		header .container .tools {
+			position: absolute;
+			top: .1rem;
+			right: 0;
+			width: 3.8rem;
+			height: .6rem;
+		}
+		header .languages  {
+			position: absolute;
+			top: 0;
+			right: 0;
+			color: #fff;
+			font-size: 12px;
+		}
+		header .languages span {
+			color: #fff;
+			cursor: pointer;
+		}
+		header .languages span.active {
+		    color: #333;
+			cursor: none;
+		}
+		header .search {
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			width: 1.8rem;
+			height: .25rem;
+		}
+		header .search input {
+			float: left;
+			display: block;
+			width: 1.5rem;
+			height: .25rem;
+			outline: none;
+			color: #fff;
+			padding: 0 .1rem;
+			border: 1px solid #fff;
+			border-right: none;
+			background-color: #8E231D;
+		}
+		header .search .searchBtn {
+			float: left;
+			width: .3rem;
+			height: .25rem;
+			background-color: #fff;
+			cursor: pointer;
+		}
+		header .search .searchBtn img {
+			display: block;
+			width: 80%;
+			height: 100%;
+			margin: 0 auto;
+		}
+		header .btnList {
+			position: absolute;
+			bottom: 0;
+			left: 1.98rem;
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			font-size: 12px;
+			color: #fff;
+		}
+		header .btnList li {
+			float: left;
+			margin-right: .1rem;
+			cursor: pointer;
+		}
+		header .btnList li:last-child {
+			margin: 0;
+		}
+
+		/*end head*/
+
+		/*start content*/
+		nav {
+			height: .6rem;
+			background-color: #EFEFEF;
+		}
+		nav .container {
+			width: 12rem;
+		}
+		nav .container ul {
+			display: flex;
+			justify-content: space-around;
+			line-height: .6rem;
+			font-weight: bold;
+			padding: .1rem 0;
+			box-sizing: border-box;
+		}
+		nav .container li {
+			position: relative;
+		}
+		nav .container li a {
+			color: #000;
+			height: .4rem;
+			line-height: .4rem;
+		}
+		nav .container li a:link {
+			text-decoration: none;
+		}
+		nav .container li a:visited {
+			text-decoration: none;
+		}
+		nav .container li a:hover {
+			text-decoration: none;
+		}
+		nav .container li a:active {
+			text-decoration: none;
+		}
+		nav .container li a.active {
+			color: #8D241C;
+			border-bottom: 2px solid #8E231D;
+		}
+		.carousel-inner .item {
+			height: 7.6rem;
+		}
+		#content .content {
+			height: .60rem;
+		}
+		#content .content01 {
+			background-color: skyblue;
+		}
+		#content .content02 {
+			background-color: pink;
+		}
+		#content .content03 {
+			background-color: orange;
+		}
+		/*end content*/
+		
+
+		/*start foot*/
+		footer {
+			padding: .5rem 0 .4rem;
+			color: #ddd;
+			background: url(../../images/bg/bg_foot.gif);
+		}
+		footer .kefudianhua {
+			font-size: 22px;
+		}
+		footer .shouhou {
+			width: .8rem;
+			height: .35rem;
+			line-height: .3rem;
+			border: 1px solid #fff;
+			font-size: 14px;
+			font-weight: bold;
+		}
+		footer .detail-nav dl {
+			float: left;
+			margin-right: .55rem;
+		}
+		footer .detail-nav dl:last-child {
+			margin-right: 0;
+		}
+		footer .detail-nav dt, 
+		footer .detail-nav dd {
+			margin-bottom: .2rem;
+		}
+		footer .detail-nav dt {
+			font-size: 14px;
+			color: #eee;
+		}
+		footer .detail-nav dd {
+			font-size: 12px;
+		}
+		footer .contact-nav  li {
+			margin-bottom: .2rem;
+		}
+		footer .contact-nav .erweima {
+			width: 1.2rem;
+			margin-left: .3rem;
+		}
+		footer .contact-nav .erweima img {
+			width: 100%;
+			margin-bottom: .08rem;
+		}
+		footer .contact-nav .erweima p {
+			font-size: 14px;
+		}
+		footer .site-info {
+			font-size: 12px;
+		}
+		/*end foot*/
