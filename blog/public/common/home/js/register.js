@@ -4,7 +4,7 @@ $(function() {
 	var idtfcode = '';
 
 	// 实现获取验证码延迟的脚本
-	
+
 	$('.getidtfcode').on('click', function(e) {
 		e.preventDefault();
 		var countdown = 5;
@@ -78,7 +78,7 @@ $(function() {
         	$('.passwordtips').hide();
         }
 
-        if (c_password != c_repassword) { 		    // 再次输入密码 
+        if (c_password != c_repassword) { 		    // 再次输入密码
         	$('.repasswordtips').fadeIn();
         	$('.repasswordtips').text('两次密码输入不一致');
         } else {
@@ -119,11 +119,11 @@ $(function() {
 		var data = $(this).data('display');
 		if (data == 1) {
 			$(this).siblings('input').attr('type', 'password');
-			$(this).find('img').attr('src', 'images/login/attention-down-icon.png');
+			$(this).find('img').attr('src', '/common/home/images/login/attention-down-icon.png');
 			$(this).data('display', '0');
 		} else {
 			$(this).siblings('input').attr('type', 'text');
-			$(this).find('img').attr('src', 'images/login/attention-up-icon.png');
+			$(this).find('img').attr('src', '/common/home/images/login/attention-up-icon.png');
 			$(this).data('display', '1');
 		}
 	});
