@@ -1,0 +1,32 @@
+
+	/*start reset*/
+	* {
+		font-family: 'microsoft yahei';
+		box-sizing: border-box !important;
+		margin: 0;
+		padding: 0;
+	}
+	.container {
+		width: 10rem;
+	}
+	ul {
+		list-style: none;
+	}
+	img {
+		display: block;
+	}
+	a {
+		display: block;
+		text-decoration: none !important;
+		color: skyblue;
+	}
+	button {
+		padding: 0;
+		border: none;
+		outline: none;
+	}
+	input:focus {
+		outline: none;
+		box-shadow: 0 0 0 2px #A6C7FF;
+	}
+	/*end reset*/
