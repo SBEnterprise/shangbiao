@@ -102,7 +102,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="registerwrap">
-					<form id="registerform">
+					<form id="registerform" method="post">
 						<h3>注册成为上表网的会员</h3>
 						<div id="username" class="inputcontainers">
 							<input type="text" name="username" placeholder="请输入用户名" aria-label="用户名">

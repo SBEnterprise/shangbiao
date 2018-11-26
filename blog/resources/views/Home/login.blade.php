@@ -107,7 +107,7 @@
 					<div class="switchbar"><a href="javascript:;" class="active">手机验证登录</a><span>|</span><a href="javascript:;">账号登录</a></div>
 
 					<!-- start 手机验证码登陆 -->
-					<form id="quickmode">
+					<form id="quickmode" method="post">
 						<div id="telnumber" class="inputcontainers">
 							<input type="text" name="telnumber" placeholder="请输入手机号" data-focus="0" aria-label="手机号">
 							<div class="inputicons"><img src="{{asset('common/home/images/login/mobile-icon.png')}}" alt="上表企业官方商城"></div>
@@ -140,7 +140,7 @@
 					<!-- end 手机验证码登陆 -->
 
 					<!-- start 账号密码登陆 .-->
-					<form id="classicalmode" style="display: none;">
+					<form id="classicalmode" method="post" style="display: none;">
 						<div id="username" class="inputcontainers">
 							<input type="text" name="username" placeholder="请输入用户名">
 							<div class="inputicons"><img src="{{asset('common/home/images/login/people-icon.png')}}" alt="上表企业官方商城"></div>

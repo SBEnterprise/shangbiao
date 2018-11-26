@@ -25,23 +25,37 @@ $(function() {
 	});
 
 	// 实现获取验证码延迟的脚本
-	
+
 	$('.getidtfcode').on('click', function(e) {
-		// e.preventDefault(); // 对于 form 中 button 自动提交无效
-		var countdown = 60;
+		e.preventDefault();
+		var countdown = 5;
 		var timeId = null;
-		var _this = $(this);
-		$(this).attr('disabled', 'true');
-		timeId = setInterval(function() {
+		var tel = $('input[name=telnumber]').val();
+
+		$.ajax({
+            type: 'post',
+            url: '{{url("/home/phonecode")}}',
+            data: 'phone='+tel+'&_token={{csrf_token()}}',
+            success:function (data) {
+             console.log(data);
+            },
+            dataType:'json'
+	     });
+		
+
+		$(this).attr('disabled', true);
+		timeId = setInterval(() => {
 			countdown--;
-			_this.html(countdown+' 后可重新获取');
+			$(this).html(countdown+' 后可重新获取');
+			if (countdown == 60) {
+				idtfcode = '8888';
+			}
 			if (countdown < 1) {
-				_this.text('获取验证码');
-				$(this).attr('disabled', 'false');
+				$(this).text('获取验证码');
+				$(this).attr('disabled', false);
 				clearInterval(timeId);
 			}
 		}, 1000);
-		return false;
 	});
 
 	// 输入框验证显示提示的脚本（手机验证登录）
