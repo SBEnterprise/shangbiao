@@ -91,7 +91,7 @@
 	<header>
 		<div class="container">
 			<div class="row">
-				<a href="javascript:;" class="logo"><img src="{{asset('common/home/images/logo.png')}}" alt="上表企业官方商城"></a>
+				<a href="javascript:;" class="logo"><img src="{{asset('common/home/images/login/logo.png')}}" alt="上表企业官方商城"></a>
 			</div>
 		</div>
 	</header>
@@ -102,7 +102,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="registerwrap">
-					<form id="registerform">
+					<form id="registerform" method="post">
 						<h3>注册成为上表网的会员</h3>
 						<div id="username" class="inputcontainers">
 							<input type="text" name="username" placeholder="请输入用户名" aria-label="用户名">
@@ -143,7 +143,7 @@
 						</div>
 						<button class="registerbtn">注&emsp;&emsp;册</button>
 						<div class="tologin" class="inputcontainers">
-							<p>已有账号，去<a href="./login.html">登录</a></p>
+							<p>已有账号，去<a href="{{url('/home/login')}}">登录</a></p>
 						</div>
 					</form>
 				</div>
