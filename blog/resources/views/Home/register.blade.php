@@ -91,7 +91,7 @@
 	<header>
 		<div class="container">
 			<div class="row">
-				<a href="javascript:;" class="logo"><img src="{{asset('common/home/images/logo.png')}}" alt="上表企业官方商城"></a>
+				<a href="javascript:;" class="logo"><img src="{{asset('common/home/images/login/logo.png')}}" alt="上表企业官方商城"></a>
 			</div>
 		</div>
 	</header>
