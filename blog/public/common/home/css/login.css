@@ -3,7 +3,7 @@
 #content {
 	height: 6rem;
 	margin-bottom: .6rem;
-	background: url({{asset('common/home/images/login/content-bg.png')}}) no-repeat 50% 50%;
+	background: url("{{asset('common/home/images/login/content-bg.png')}}") no-repeat 50% 50%;
 }
 #content .container {
 	position: relative;

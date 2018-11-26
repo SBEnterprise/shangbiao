@@ -160,14 +160,13 @@ $(function() {
 
 	$('.passwordicon').on('click', function() {
 		var data = $(this).data('display');
-		console.log(data)
 		if (data == 1) {
 			$(this).siblings('input').attr('type', 'password');
-			$(this).find('img').attr('src', 'images/login/attention-down-icon.png');
+			$(this).find('img').attr('src', '/common/home/images/login/attention-down-icon.png');
 			$(this).data('display', '0');
 		} else {
 			$(this).siblings('input').attr('type', 'text');
-			$(this).find('img').attr('src', 'images/login/attention-up-icon.png');
+			$(this).find('img').attr('src', '/common/home/images/login/attention-up-icon.png');
 			$(this).data('display', '1');
 		}
 	});
