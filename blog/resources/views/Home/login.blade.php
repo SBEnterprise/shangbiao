@@ -152,7 +152,7 @@
 							<div class="passwordicon" data-display="0"><img src="{{asset('common/home/images/login/attention-down-icon.png')}}" alt="上表企业官方商城"></div>
 							<p class="passwordtips formtips" style="display: none;">密码不正确</p>
 						</div>
-						<button class="loginBtn">立刻登录</button>
+						<button class="loginbtn">立刻登录</button>
 						<div class="toolsbar clearfix">
 							<a href="{{url('/home/register')}}" class="toregister pull-left">免费注册</a>
 							<a href="javascript:;" class="getpassback pull-right">忘记密码</a>
