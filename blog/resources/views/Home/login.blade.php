@@ -64,13 +64,14 @@
 	})(640, 640);
 	</script>
 
+
 	<!-- 引入外部 CSS -->
-	<link rel="stylesheet" href="assets/css/normalize.css">
-	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" href="assets/css/reset.css">
-	<link rel="stylesheet" href="assets/css/common.css">
-	<link rel="stylesheet" href="assets/css/login.css">
- 
+	<link rel="stylesheet" href="{{asset('common/home/css/normalize.css')}}">
+	<link rel="stylesheet" href="{{asset('common/bootstrap-3.3.7/css/bootstrap.min.css')}}">
+	<link rel="stylesheet" href="{{asset('common/home/css/reset.css')}}">
+	<link rel="stylesheet" href="{{asset('common/home/css/common.css')}}">
+	<link rel="stylesheet" href="{{asset('common/home/css/login.css')}}">
+
 	<!-- HTML5 Shiv 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
 	<!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
 	<!--[if lt IE 9]>
@@ -78,10 +79,11 @@
 	 <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
 	<![endif]-->
 
-	<!-- 引入外部 js -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
-	<script src="assets/js/login.js"></script>
+	<!-- 引入外部 js  -->
+	<script src="{{asset('common/home/js/jquery.min.js')}}"></script>
+	<script src="{{asset('common/bootstrap-3.3.7/js/bootstrap.min.js')}}"></script>
+	<script src="{{asset('common/home/js/common.js')}}"></script>
+	<script src="{{asset('common/home/js/login.js')}}"></script>
 
 </head>
 <body>
@@ -90,7 +92,7 @@
 	<header>
 		<div class="container">
 			<div class="row">
-				<a href="javascript:;" class="logo"><img src="images/login/logo.png" alt="上表企业官方商城"></a>
+				<a href="javascript:;" class="logo"><img src="{{asset('common/home/images/logo.png')}}" alt="上表企业官方商城"></a>
 			</div>
 		</div>
 	</header>
@@ -108,18 +110,18 @@
 					<form id="quickmode">
 						<div id="telnumber" class="inputcontainers">
 							<input type="text" name="telnumber" placeholder="请输入手机号" data-focus="0" aria-label="手机号">
-							<div class="inputicons"><img src="images/login/mobile-icon.png" alt="上表企业官方商城"></div>
+							<div class="inputicons"><img src="{{asset('common/home/images/login/mobile-icon.png')}}" alt="上表企业官方商城"></div>
 							<p class="telnumbertips formtips" style="display: none;">手机号码不能为空</p>
 						</div>
 						<div id="idtfcode" class="inputcontainers clearfix">
 							<input type="text" name="idtfcode" placeholder="请输入验证码" class="pull-left" aria-label="短信验证码">
 							<button class="getidtfcode pull-right" data-idtfcode="8888">获取验证码</button>
-							<div class="inputicons"><img src="images/login/safe-icon.png" alt="上表企业官方商城"></div>
+							<div class="inputicons"><img src="{{asset('common/home/images/login/safe-icon.png')}}" alt="上表企业官方商城"></div>
 							<p class="idtfcodetips formtips" style="display: none;">请输入短信动态码</p>
 						</div>
 						<button class="loginbtn">立刻登录</button>
 						<div class="toolsbar clearfix">
-							<a href="./register.html" class="toregister pull-left">免费注册</a>
+							<a href="{{url('/home/register')}}" class="toregister pull-left">免费注册</a>
 							<a href="javascript:;" class="getpassback pull-right">忘记密码</a>
 						</div>
 						<div class="otherchoices">
@@ -129,9 +131,9 @@
 								<span class="bar pull-left"></span>
 							</div>
 							<div class="logingroups clearfix">
-								<a href="javascript:;"><img src="images/login/weixin-icon.png" alt="上表企业官方商城"></a>
-								<a href="javascript:;"><img src="images/login/zhifubao-icon.png" alt="上表企业官方商城"></a>
-								<a href="javascript:;"><img src="images/login/xinlang-icon.png" alt="上表企业官方商城"></a>
+								<a href="javascript:;"><img src="{{asset('common/home/images/login/weixin-icon.png')}}" alt="上表企业官方商城"></a>
+								<a href="javascript:;"><img src="{{asset('common/home/images/login/zhifubao-icon.png')}}" alt="上表企业官方商城"></a>
+								<a href="javascript:;"><img src="{{asset('common/home/images/login/xinlang-icon.png')}}" alt="上表企业官方商城"></a>
 							</div>
 						</div>
 					</form>
@@ -141,18 +143,18 @@
 					<form id="classicalmode" style="display: none;">
 						<div id="username" class="inputcontainers">
 							<input type="text" name="username" placeholder="请输入用户名">
-							<div class="inputicons"><img src="images/login/people-icon.png" alt="上表企业官方商城"></div>
+							<div class="inputicons"><img src="{{asset('common/home/images/login/people-icon.png')}}" alt="上表企业官方商城"></div>
 							<p class="usernametips formtips" style="display: none;">用户名不能为空</p>
 						</div>
 						<div id="password" class="inputcontainers clearfix">
 							<input type="password" name="password" placeholder="请输入密码">
-							<div class="inputicons"><img src="images/login/lock-icon.png" alt="上表企业官方商城"></div>
-							<div class="passwordicon" data-display="0"><img src="images/login/attention-down-icon.png" alt="上表企业官方商城"></div>
+							<div class="inputicons"><img src="{{asset('common/home/images/login/lock-icon.png')}}" alt="上表企业官方商城"></div>
+							<div class="passwordicon" data-display="0"><img src="{{asset('common/home/images/login/attention-down-icon.png')}}" alt="上表企业官方商城"></div>
 							<p class="passwordtips formtips" style="display: none;">密码不正确</p>
 						</div>
 						<button class="loginBtn">立刻登录</button>
 						<div class="toolsbar clearfix">
-							<a href="javascript:;" class="toregister pull-left">免费注册</a>
+							<a href="{{url('/home/register')}}" class="toregister pull-left">免费注册</a>
 							<a href="javascript:;" class="getpassback pull-right">忘记密码</a>
 						</div>
 						<div class="otherchoices">
@@ -162,9 +164,9 @@
 								<span class="bar pull-left"></span>
 							</div>
 							<div class="logingroups clearfix">
-								<a href="javascript:;"><img src="images/login/weixin-icon.png" alt="上表企业官方商城"></a>
-								<a href="javascript:;"><img src="images/login/zhifubao-icon.png" alt="上表企业官方商城"></a>
-								<a href="javascript:;"><img src="images/login/xinlang-icon.png" alt="上表企业官方商城"></a>
+								<a href="javascript:;"><img src="{{asset('common/home/images/login/weixin-icon.png')}}" alt="上表企业官方商城"></a>
+								<a href="javascript:;"><img src="{{asset('common/home/images/login/zhifubao-icon.png')}}" alt="上表企业官方商城"></a>
+								<a href="javascript:;"><img src="{{asset('common/home/images/login/xinlang-icon.png')}}" alt="上表企业官方商城"></a>
 							</div>
 						</div>
 					</form>
@@ -185,7 +187,7 @@
 				<p>Copyright 2018-2027 WWW.BESTSHANGBIAO.CN.LTD ALL RIGHT RESERVED.</p>
 			</div>
 			<div class="wanganbeian">
-				<a href="javascript:;"><img src="images/login/wj.gif" alt="上表企业官方商城"></a>
+				<a href="javascript:;"><img src="{{asset('common/home/images/login/wj.gif')}}" alt="上表企业官方商城"></a>
 			</div>
 		</div>
 	</footer>

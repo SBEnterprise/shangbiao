@@ -143,7 +143,7 @@
 						</div>
 						<button class="registerbtn">注&emsp;&emsp;册</button>
 						<div class="tologin" class="inputcontainers">
-							<p>已有账号，去<a href="./login.html">登录</a></p>
+							<p>已有账号，去<a href="{{url('/home/login')}}">登录</a></p>
 						</div>
 					</form>
 				</div>
