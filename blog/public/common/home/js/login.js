@@ -27,20 +27,23 @@ $(function() {
 	// 实现获取验证码延迟的脚本
 
 	$('.getidtfcode').on('click', function(e) {
-		e.preventDefault();
+		// e.preventDefault();
 		var countdown = 5;
 		var timeId = null;
 		var tel = $('input[name=telnumber]').val();
-  // console.log(tel);
+		var url = $('input[name=idtfcode_api_url]').val();
+		var csrf = $('input[name=csrf_code]').val();
+
 		$.ajax({
             type: 'post',
-            url: '{{url("/home/phonecode")}}',
-            data: 'phone='+tel+'&_token={{csrf_token()}}',
-            success:function (data) {
-             console.log(data);
+            url: url,
+            data: 'phone=' + tel + '&_token=' + csrf,
+            success: function (data) {
+            	console.log(data);
             },
-            dataType:'json'
+            dataType: 'json'
 	     });
+
 
 
 		$(this).attr('disabled', true);
@@ -168,6 +171,7 @@ $(function() {
 	        });*/
 	        return false;
         }
+        return false;
 	});
 
 	// 密码输入框密码显示方式的切换的实现脚本

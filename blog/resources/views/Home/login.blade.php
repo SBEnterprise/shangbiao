@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2, user-scalable=yes">
+	<meta name="csrf-token" content="{{ csrf_token() }}" />
 	<meta http-equiv="Cache-Control" content="no-transform"/>
 	<meta http-equiv="Cache-Control" content="no-siteapp"/>
-	
+
 	<title>登录页 - 上表企业官方商城</title>
 	<script>
 	// flexible 代码
@@ -82,7 +83,7 @@
 	<![endif]-->
 
 	<!-- 引入外部 js  -->
-	<script src="{{asset('common/home/js/jquery.min.js')}}"></script>
+	<script src="{{asset('common/home/js/jquery-3.3.1.min.js')}}"></script>
 	<script src="{{asset('common/bootstrap-3.3.7/js/bootstrap.min.js')}}"></script>
 	<script src="{{asset('common/home/js/common.js')}}"></script>
 	<script src="{{asset('common/home/js/login.js')}}"></script>
@@ -99,7 +100,7 @@
 		</div>
 	</header>
 	<!-- end head -->
-	
+
 	<!-- start content -->
 	<div id="content">
 		<div class="container">
@@ -109,7 +110,9 @@
 					<div class="switchbar"><a href="javascript:;" class="active">手机验证登录</a><span>|</span><a href="javascript:;">账号登录</a></div>
 
 					<!-- start 手机验证码登陆 -->
-					<form id="quickmode" >
+					<div id="quickmode" class="formwrap">
+						<input type="hidden" name="idtfcode_api_url" value='{{url("/home/phonecode")}}'>
+						<input type="hidden" name="csrf_code" value='{{ csrf_token() }}'>
 						<div id="telnumber" class="inputcontainers">
 
 							<!-- <input type="hidden" name="_token" value="{{csrf_token()}}"/> -->
@@ -141,18 +144,18 @@
 								<a href="javascript:;"><img src="{{asset('common/home/images/login/xinlang-icon.png')}}" alt="上表企业官方商城"></a>
 							</div>
 						</div>
-					</form>
+					</div>
 					<!-- end 手机验证码登陆 -->
 
 					<!-- start 账号密码登陆 .-->
-					<form id="classicalmode" method="post" style="display: none;">
+					<div id="classicalmode" class="formwrap" style="display: none;">
 						<div id="username" class="inputcontainers">
-							<input type="text" name="username" placeholder="请输入用户名">
+							<input type="text" name="username" placeholder="请输入用户名" aria-label="用户名">
 							<div class="inputicons"><img src="{{asset('common/home/images/login/people-icon.png')}}" alt="上表企业官方商城"></div>
 							<p class="usernametips formtips" style="display: none;">用户名不能为空</p>
 						</div>
 						<div id="password" class="inputcontainers clearfix">
-							<input type="password" name="password" placeholder="请输入密码">
+							<input type="password" name="password" placeholder="请输入密码" aria-label="密码">
 							<div class="inputicons"><img src="{{asset('common/home/images/login/lock-icon.png')}}" alt="上表企业官方商城"></div>
 							<div class="passwordicon" data-display="0"><img src="{{asset('common/home/images/login/attention-down-icon.png')}}" alt="上表企业官方商城"></div>
 							<p class="passwordtips formtips" style="display: none;">密码不正确</p>
@@ -174,7 +177,7 @@
 								<a href="javascript:;"><img src="{{asset('common/home/images/login/xinlang-icon.png')}}" alt="上表企业官方商城"></a>
 							</div>
 						</div>
-					</form>
+					</div>
 					<!-- end 账号密码登陆 -->
 				</div>
 				<!-- end 标准登陆框 -->
@@ -197,7 +200,7 @@
 		</div>
 	</footer>
 	<!-- end foot -->
-	
+
 	<script>
 
 	</script>
