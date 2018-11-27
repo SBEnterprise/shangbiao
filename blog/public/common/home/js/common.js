@@ -84,4 +84,10 @@ $(function() {
         	$('.telnumbertips').text('请先填写有效的手机号码并获取短信验证码');
 		}
 	});
+
+        // 公共函数
+
+        function preventSubmit() {
+                return false;
+        }
 });

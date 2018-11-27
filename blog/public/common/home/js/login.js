@@ -27,21 +27,42 @@ $(function() {
 	// 实现获取验证码延迟的脚本
 
 	$('.getidtfcode').on('click', function(e) {
-		e.preventDefault();
+		// e.preventDefault();
 		var countdown = 5;
 		var timeId = null;
 		var tel = $('input[name=telnumber]').val();
+		var url = $('input[name=idtfcode_api_url]').val();
+		var csrf = $('input[name=csrf_code]').val();
+
+/*		var data = {
+			phone: tel,
+			_token: $('meta[name="csrf-token"]').attr('content')
+		};*/
 
 		$.ajax({
             type: 'post',
-            url: '{{url("/home/phonecode")}}',
-            data: 'phone='+tel+'&_token={{csrf_token()}}',
-            success:function (data) {
-             console.log(data);
+            url: url,
+            data: 'phone=' + tel + '&_token=' + csrf,
+            success: function (data) {
+            	console.log(data);
             },
-            dataType:'json'
+            dataType: 'json'
 	     });
+
+/*		$.ajax({
+            type: 'post',
+            url: "http://www.testshangbiao.com/home/phonecode",
+            data: 'phone=' + tel + '&_token={{csrf_token}}',
+            success: function (data) {
+            	console.log(data);
+            },
+            dataType: 'json'
+	     });*/
 		
+	
+/*		$.post('{{url("/home/phonecode")}}', data, function(data) {
+			console.log(data)
+		});*/
 
 		$(this).attr('disabled', true);
 		timeId = setInterval(() => {
@@ -56,6 +77,7 @@ $(function() {
 				clearInterval(timeId);
 			}
 		}, 1000);
+		// return false;
 	});
 
 	// 输入框验证显示提示的脚本（手机验证登录）
@@ -168,6 +190,7 @@ $(function() {
 	        });*/
 	        return false;
         }
+        return false;
 	});
 
 	// 密码输入框密码显示方式的切换的实现脚本
