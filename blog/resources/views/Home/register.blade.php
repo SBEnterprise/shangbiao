@@ -5,6 +5,7 @@
 	<meta name="format-detection" content="telephone=no">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2, user-scalable=yes">
 	<meta http-equiv="Cache-Control" content="no-transform"/>
+	<meta name="csrf-token" content="{{ csrf_token() }}" />
 	<meta http-equiv="Cache-Control" content="no-siteapp"/>
 	<title>注册页 - 上表企业官方商城</title>
 	<script>
@@ -104,6 +105,7 @@
 				<div class="registerwrap">
 					<form id="registerform" method="post">
 						<h3>注册成为上表网的会员</h3>
+					{{ csrf_field() }}
 						<div id="username" class="inputcontainers">
 							<input type="text" name="username" placeholder="请输入用户名" aria-label="用户名">
 							<div class="inputicons"><img src="{{asset('common/home/images/login/people-icon.png')}}" alt="上表企业官方商城"></div>

@@ -1,6 +1,6 @@
 
 $(function() {
- 
+
 	// 常量
 
 	const TEL_REG = /^(0|86|17951)?(13[0-9]|15[012356789]|16[6]|17[012345678]|18[0-9]|14[5679]|19[891])[0-9]{8}$/;
@@ -31,7 +31,7 @@ $(function() {
 		var countdown = 5;
 		var timeId = null;
 		var tel = $('input[name=telnumber]').val();
-
+  // console.log(tel);
 		$.ajax({
             type: 'post',
             url: '{{url("/home/phonecode")}}',
@@ -41,7 +41,7 @@ $(function() {
             },
             dataType:'json'
 	     });
-		
+
 
 		$(this).attr('disabled', true);
 		timeId = setInterval(() => {

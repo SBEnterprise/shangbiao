@@ -3,9 +3,11 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2, user-scalable=yes">
 	<meta http-equiv="Cache-Control" content="no-transform"/>
 	<meta http-equiv="Cache-Control" content="no-siteapp"/>
+	
 	<title>登录页 - 上表企业官方商城</title>
 	<script>
 	// flexible 代码
@@ -107,8 +109,11 @@
 					<div class="switchbar"><a href="javascript:;" class="active">手机验证登录</a><span>|</span><a href="javascript:;">账号登录</a></div>
 
 					<!-- start 手机验证码登陆 -->
-					<form id="quickmode" method="post">
+					<form id="quickmode" >
 						<div id="telnumber" class="inputcontainers">
+
+							<!-- <input type="hidden" name="_token" value="{{csrf_token()}}"/> -->
+							{{ csrf_field() }}
 							<input type="text" name="telnumber" placeholder="请输入手机号" data-focus="0" aria-label="手机号">
 							<div class="inputicons"><img src="{{asset('common/home/images/login/mobile-icon.png')}}" alt="上表企业官方商城"></div>
 							<p class="telnumbertips formtips" style="display: none;">手机号码不能为空</p>
