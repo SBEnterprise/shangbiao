@@ -7,13 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Collect extends Model
 {
 
-    protected $table = 'goods_collect';
+    protected $table = 'sb_goods_collect';
     protected $primaryKey = 'id';
 
-    // public function collect() 
-    // {
-    // 	return $this->hasOne('App\Model\Goods',);
-    // }
     public function collectGoods()
     {
     	return $this->hasOne('App\Model\Goods','id','goods_id')

@@ -33,6 +33,12 @@ Route::prefix('home')->group(function () {
   Route::get('login', 'Home\UserController@loginView');
   //处理登录
   Route::post('dologin', 'Home\UserController@doLogin');
+  //处理手机号登录
+  Route::post('phonelogin', 'Home\UserController@phoneLogin');
+  //处理查看手机号是否存在
+  Route::post('forgetphone', 'Home\UserController@forgetPhone');
+  //处理手机号找回密码
+  Route::post('forgetphone', 'Home\UserController@forgetPhone');
   //执行用户退出
   Route::get('loginout', 'Home\UserController@loginOut');
   //注册页面
@@ -42,6 +48,15 @@ Route::prefix('home')->group(function () {
   Route::post('phonecode', 'Home\UserController@phoneCode');
   //前台注册数据新增处理
   Route::post('addregisterdata', 'Home\UserController@addRegisterData');
+
+  //=======================收藏功能==============================================
+    Route::get('collect','Home\CollectController@collect');
+    //添加收藏
+    Route::get('collect/add','Home\CollectController@addCollect');
+    //取消收藏
+    Route::get('collect/del','Home\CollectController@delCollect');
+
+
 
 });
 

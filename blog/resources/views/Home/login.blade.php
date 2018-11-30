@@ -116,6 +116,7 @@
 						<div id="telnumber" class="inputcontainers">
 
 							<!-- <input type="hidden" name="_token" value="{{csrf_token()}}"/> -->
+
 							{{ csrf_field() }}
 							<input type="text" name="telnumber" placeholder="请输入手机号" data-focus="0" aria-label="手机号">
 							<div class="inputicons"><img src="{{asset('common/home/images/login/mobile-icon.png')}}" alt="上表企业官方商城"></div>

@@ -35,14 +35,14 @@ class CollectController extends Controller
         // 判断用户是否已登录
         if (empty(Session::get('userid'))) {
             return json_encode(['status'=>0,'msg'=>'请登录']);
-        } 
+        }
 
 	    $return_msg = ['error'=>1, 'msg'=>''];
 	    $user_id  = Session::get('userid'); //用户ID
 	    $goods_id = intval(@$request->post('gid')); //商品ID
 	    // dd($goods_id);
 	    $time = time();
-	    
+
 	    //判断是否已经存在收藏
 	    $is_exists = Collect::where('user_id',$user_id)
 	    			->where('goods_id',$goods_id)
@@ -70,10 +70,10 @@ class CollectController extends Controller
 	        //存在时, 提示已经收藏
 		    $res = Collect::where('goods_id',$goods_id)->where('user_id',$user_id)->delete();
 		    if ($res){
-		    	$return_msg['msg'] = '取消收藏'; 
+		    	$return_msg['msg'] = '取消收藏';
 		    } else {
-		    	$return_msg['msg'] = '取消收藏失败'; 
-		    }    
+		    	$return_msg['msg'] = '取消收藏失败';
+		    }
 	        return $return_msg;
 	    }
 

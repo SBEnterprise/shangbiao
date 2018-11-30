@@ -68,8 +68,8 @@ class UserController extends Controller
         $repass = $request->input('repass');
         $email = $request->input('email');
         $phone = $request->input('phone');
-        $user = User::select(['id', 'username', 'password', 'phone'])->where('username', $name)->first();
-        $phonecheck = User::select(['id', 'username', 'password', 'phone'])->where('phone', $phone)->first();
+        $user = User::select(['id', 'user_name', 'password', 'phone'])->where('user_name', $name)->first();
+        $phonecheck = User::select(['id', 'user_name', 'password', 'phone'])->where('phone', $phone)->first();
 
        if ($user) {
             echo json_encode(['status'=>1, 'msg'=>'会员名已被注册！']);
@@ -161,7 +161,7 @@ class UserController extends Controller
                 return;
             }
 
-            if ($request->session()->get($_POST['phone'])[1]==$_POST['phone'] && $request->session()->get($_POST['phone'])[2][0] == $_POST['checkphone']) {
+            if ($request->session()->get($_POST['phone'])[1]==$_POST['phone'] && $request->session()->get($_POST['phone'])[2][0] == $_POST['phonecode']) {
 
                 //验证成功后删除session的手机验证码
                 $request->session()->forget($_POST['phone']);
@@ -169,7 +169,7 @@ class UserController extends Controller
                 $password = password_hash($_POST['pass'], PASSWORD_DEFAULT);
 
                 $data = [
-                    'username'=>$_POST['name'],
+                    'user_name'=>$_POST['name'],
                     'email'=>$_POST['email'],
                     'password'=>$password,
                     'status'=>0,
@@ -188,7 +188,7 @@ class UserController extends Controller
 
             } else {
                 // echo '失败';exit;
-                echo json_encode(['status'=>5, 'msg'=>'手机验证码不正确！']);
+                echo json_encode(['status'=>5, 'msg'=>'验证码不正确！']);
                 return;
             }
 
@@ -200,6 +200,40 @@ class UserController extends Controller
     }
 
 
+    /**
+    * 前台手机登录处理
+    * @author LIZHENTAO <121468594@qq.com>
+    * @param $request  Request的对象
+    * @return json  返回的数据是json数据  成功返回true跳转首页，失败返回登录信息有误
+    */
+    public function phoneLogin(Request $request)
+    {
+
+        $phone = $request->input('phone');
+        $pcode = $request->input('phonecode');
+        $nuser = User::select(['user_name','phone','id'])->where('phone', $phone)->first();
+
+        if ($request->session()->get($_POST['phone'])[2][0] == $_POST['phonecode']) {
+
+            //验证成功后删除session的手机验证码
+            $request->session()->forget($_POST['phone']);
+            //判断用户是否存在
+            if ($nuser) {
+                echo json_encode(['status'=>1, 'msg'=>'正在登录中...']);
+                return;
+            } else {
+               echo json_encode(['status'=>2, 'msg'=>'手机号不正确！']);
+               return;
+           }
+
+        } else {
+            // echo '失败';exit;
+            echo json_encode(['status'=>5, 'msg'=>'验证码不正确！']);
+            return;
+        }
+
+    }
+
 
 
     /**
@@ -210,13 +244,16 @@ class UserController extends Controller
     */
     public function doLogin(Request $request)
     {
+
         $name = $request->input('name');
         $pass = $request->input('pass');
-        $user = User::select(['username', 'id', 'password'])->where('username', $name)->first();
+        $nuser = User::select(['user_name','phone','email','id', 'password'])->where('user_name', $name)->first();
+        $puser = User::select(['user_name','phone','email','id', 'password'])->where('phone', $name)->first();
+        $euser = User::select(['user_name','phone','email','id', 'password'])->where('email', $name)->first();
         // dd($user->id);
-        // $userkey = $user->id.$user->username;
-        // $request->session()->put('username', $user->username);
-        //  $value = $request->session()->get( 'username' );
+        // $userkey = $user->id.$user->user_name;
+        // $request->session()->put('user_name', $user->user_name);
+        //  $value = $request->session()->get( 'user_name' );
 
         // dd($value);
 
@@ -231,15 +268,15 @@ class UserController extends Controller
             return;
         }
         //判断验证码是否正确
-        $CheckCode = CommonApi::CheckCode($request,'code');
-        if (!$CheckCode) {
-          echo json_encode(['status'=>100, 'msg'=>'验证码错误！']);
-           return;
-        }
+        // $CheckCode = CommonApi::CheckCode($request,'code');
+        // if (!$CheckCode) {
+        //   echo json_encode(['status'=>100, 'msg'=>'验证码错误！']);
+        //    return;
+        // }
 
          //判断用户是否存在
-        if (!$user) {
-            echo json_encode(['status'=>2, 'msg'=>'用户名不正确！']);
+        if (!$nuser && !$puser && !$euser) {
+            echo json_encode(['status'=>2, 'msg'=>'账号不正确！']);
             return;
         }
         // 加密后密码判断
@@ -252,7 +289,7 @@ class UserController extends Controller
             }
 
             //将用户名存放seesion中
-            $request->session()->put('username', $user->username);
+            $request->session()->put('user_name', $user->user_name);
             $request->session()->put('userid', $user->id);
 
             echo json_encode(['status'=>1, 'msg'=>'正在登录中...']);
@@ -268,16 +305,76 @@ class UserController extends Controller
 
     }
 
+    /**
+    * 前台手机找回密码处理
+    * @author LIZHENTAO <121468594@qq.com>
+    * @param $request  Request的对象
+    * @return json  返回的数据是json数据
+    */
+    public function forgetPhone(Request $request)
+    {
+        // 查询手机号是否已绑定
+        $phone = $request->input('phone');
+        $user = User::select(['phone','id'])->where('phone', $phone)->first();
+
+        if (!$user) {
+           echo json_encode(['status'=>2, 'msg'=>'该手机号不存在']);
+           return;
+       }
+
+    }
+
+
+    /**
+    * 前台手机找回密码处理
+    * @author LIZHENTAO <121468594@qq.com>
+    * @param $request  Request的对象
+    * @return json  返回的数据是json数据  成功返回true跳转登录页
+    */
+    public function forgetPassword(Request $request)
+    {
+        $phone = $request->input('phone');
+        $phonecocd = $request->input('phonecocd');
+        $pass = $_POST['pass'];
+        $repass = $_POST['repass'];
+        //两次密码判断是否一致
+        if($pass==$repass){
+
+          //密码加密
+          $password = password_hash($pass, PASSWORD_DEFAULT);
+
+          $data = [
+              'password'=>$pass
+          ];
+
+          $result = User::update($data);
+          if ($result) {
+               echo json_encode(['status'=>1, 'msg'=>'修改成功']);
+               return;
+          } else {
+               echo json_encode(['status'=>4, 'msg'=>'修改失败，请重试']);
+               return;
+          }
+
+        }else {
+          // echo '两次密码不一致，请重新输入';
+          echo json_encode('error');
+          exit;
+        }
+
+
+    }
+
 
     /**
     * 执行用户退出操作
     * @author LIZHENTAO <121468594@qq.com>
     * @param $request  Request的对象
-    * @return 返回true跳转登录页 删除session中键为username的值
+    * @return 返回true跳转登录页 删除session中键为user_name的值
     */
     public function loginOut(Request $request)
     {
-        $request->session()->forget('username');
+        $request->session()->forget('user_name');
         $request->session()->forget('userid');
         return view('/Home/login');
     }

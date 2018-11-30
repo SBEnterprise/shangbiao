@@ -10,6 +10,15 @@ $(function() {
 
 	// 切换登录模式的脚本
 
+		ajaxSetup();
+    function ajaxSetup() {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+            }
+        });
+    }
+
 	$('.switchbar a').on('click', function() {
 		var c = $(this).attr('class');
 		var t = $(this).text();
@@ -28,6 +37,7 @@ $(function() {
 
 	$('.getidtfcode').on('click', function(e) {
 		// e.preventDefault();
+
 		var countdown = 5;
 		var timeId = null;
 		var tel = $('input[name=telnumber]').val();
@@ -43,6 +53,18 @@ $(function() {
             },
             dataType: 'json'
 	     });
+
+
+
+		// $.ajax({
+		// 			type: 'post',
+		// 			url: '{{url("/home/phonecode")}}',
+		// 			data: 'phone='+tel+'_token='+csrf,
+		// 			success:function (data) {
+		// 				console.log(data);
+		// 			},
+		// 			dataType:'json'
+		// });
 
 
 
