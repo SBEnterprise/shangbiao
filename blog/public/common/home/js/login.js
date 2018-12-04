@@ -53,9 +53,6 @@ $(function() {
             },
             dataType: 'json'
 	     });
-
-
-
 		// $.ajax({
 		// 			type: 'post',
 		// 			url: '{{url("/home/phonecode")}}',

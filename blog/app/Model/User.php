@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Model
 {
     //一个模型对应一张表， 如果模型名是User,对应表名是users
-    protected $table = 'sb_user';
+    protected $table = 'users';
 
     protected $primaryKey = 'id';
     public $timestamps = false;

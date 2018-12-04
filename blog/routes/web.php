@@ -50,6 +50,7 @@ Route::prefix('home')->group(function () {
   Route::post('addregisterdata', 'Home\UserController@addRegisterData');
 
   //=======================收藏功能==============================================
+    //查询已经收藏
     Route::get('collect','Home\CollectController@collect');
     //添加收藏
     Route::get('collect/add','Home\CollectController@addCollect');
